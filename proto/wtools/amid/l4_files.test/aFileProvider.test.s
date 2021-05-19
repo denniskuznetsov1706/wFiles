@@ -323,10 +323,23 @@ function readWriteOptionWriteMode( test )
   var data = 'data1';
   var filePath = a.abs( 'file1.txt' );
   var writeMode = 'append';
-
-  /* qqq : for junior : implement please */
-  // test.true( false );
-
+  a.fileProvider.fileWrite({ filePath, data, writeMode });
+  var got = a.fileProvider.fileRead( filePath );
+  test.identical( got, data );
+  
+  
+  /* */
+  
+  test.case = 'writeMode:prepend';
+  a.reflect();
+  var data = 'data1';
+  var filePath = a.abs( 'file1.txt' );
+  var writeMode = 'prepend';
+  a.fileProvider.fileWrite({ filePath, data, writeMode });
+  var got = a.fileProvider.fileRead( filePath );
+  test.identical( got, data );
+  
+  
   /* */
 
   test.case = 'more test cases?';
